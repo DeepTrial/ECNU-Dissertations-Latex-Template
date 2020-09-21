@@ -1,0 +1,288 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                                                                           %
+%          LaTeX File for Doctor (Master) Thesis of ECNU                    %
+%            华东师范大学博士（硕士）论文模板 ____lizb                        %
+%                                                                           %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%!TEX program = xelatex
+\documentclass[12pt,openany,a4paper,fancyhdr,oneside]{ctexbook}
+%\documentclass[12pt,openright,a4paper,fancyhdr,twoside]{ctexbook}
+%draft 选项可以使插入的图形只显示外框，以加快预览速度。
+%\documentclass[11pt,a4paper,openany,draft]{book}
+
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\usepackage[CJKbookmarks,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{pdfpages}
+\usepackage{shortvrb,indentfirst,ulem,makeidx}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{indentfirst,latexsym,amsthm,colortbl,subfigure,clrscode}
+\usepackage{algorithm}
+% \usepackage{algorithmicx}
+% \usepackage{algpseudocode}   % 如果后面出问题，注释掉这个
+\usepackage{algorithmic}    % 原本是有这个，和上面的冲突，注释了
+\usepackage{bm}                     % 处理数学公式中的黑斜体的宏包
+\usepackage{amsmath}                % AMSLaTeX宏包 用来排出更加漂亮的公式
+\usepackage{amssymb}                % AMSLaTeX宏包 用来排出更加漂亮的公式
+
+\usepackage{mathrsfs}
+\usepackage[subnum]{cases}
+\usepackage[numbers,sort&compress]{natbib}
+%\usepackage[super,square,numbers,sort&compress]{natbib}
+\usepackage{hypernat}
+\usepackage{enumerate}
+\usepackage{geometry}
+
+\usepackage{times}
+\usepackage{fontspec}
+\usepackage{libertine}
+
+\usepackage{caption}
+\usepackage{titletoc}
+%下面是我自己加的包
+\usepackage{multirow}
+\usepackage{bigdelim}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{graphicx,color,xcolor,colortbl}
+\usepackage{epstopdf,epsfig}
+\usepackage{amssymb}
+\usepackage{tabularx}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+% \usepackage{color}
+% \usepackage[dvipsnames]{xcolor}
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\makeindex
+\pagestyle{fancy}
+
+\fancyhead[RO,LE]{\wuhao{华东师范大学研究生硕士学位论文}}
+\fancyhead[LO]{\wuhao \leftmark} 
+\fancyhead[RE]{\wuhao \leftmark}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyfoot[CO,CE]{\thepage}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\algorithmiccomment}[1]{// #1}
+
+
+%                    根据自己正文需要做的一些定义                 %
+%==================================================================
+\def\diag{{\rm diag}}
+\def\rank{{\rm rank}}
+\def\RR{{\cal R}}
+\def\NN{{\cal N}}
+\def\R{{\mathbb R}}
+\def\C{{\mathbb C}}
+\let\dis=\displaystyle
+
+\def\p{\partial}
+\def\f{\frac}
+\def\mr{\mathrm}
+\def\mb{\mathbf}
+\def\mc{\mathcal}
+\def\b{\begin}
+\def\e{\end}
+
+\newtheorem{thm1}{Theorem}[part]
+\newtheorem{thm2}{Theorem}[section]
+\newtheorem{thm3}{Theorem}[subsection]
+\newtheorem{them}[thm2]{定理}
+\newtheorem{theorem}[thm2]{定理}
+\newtheorem{defn}[thm2]{定义}
+\newtheorem{define}[thm2]{定义}
+\newtheorem{ex}[thm2]{例}
+\newtheorem{exs}[thm2]{例}
+\newtheorem{example}[thm2]{例}
+\newtheorem{prop}[thm2]{命题}
+\newtheorem{lemma}[thm2]{引理}
+\newtheorem{cor}[thm2]{推论}
+\newtheorem{remark}[thm2]{注释}
+\newtheorem{notation}[thm2]{记号}
+\newtheorem{abbre}[thm2]{缩写}
+% \newtheorem{algorithm}[thm2]{算法}
+\newtheorem{problem}[thm2]{问题}
+\newcommand{\gameauth}{\mathsf{Game}^\mathsf{Auth}}
+\newcommand{\gametul}{\mathsf{Game}^\mathsf{TUL}}
+\newcommand{\gamepriv}{\mathsf{Game}^\mathsf{PRIV}}
+\newcommand{\advaauth}{\mathsf{Adv}_{\mc A}^{\mathsf{Auth}}}
+\newcommand{\advatul}{\mathsf{Adv}_{\mc A}^{\mathsf{TUL}}}
+\newcommand{\advapriv}{\mathsf{Adv}_{\mc A}^{\mathsf{PRIV}}}
+\newcommand{\tsf}{\textsf}
+\newtheorem{analysis}{Analysis}
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ed}{\end{enumerate}}
+
+\newcommand{\tabincell}[2]{\begin{tabular}{@{}#1@{}}#2\end{tabular}}
+\newcommand{\mbb}{\mathbb}
+\newcommand{\yihao}{\fontsize{26pt}{36pt}\selectfont}           % 一号, 1.4 倍行距
+\newcommand{\erhao}{\fontsize{22pt}{28pt}\selectfont}          % 二号, 1.25倍行距
+\newcommand{\xiaoer}{\fontsize{18pt}{18pt}\selectfont}          % 小二, 单倍行距
+\newcommand{\sanhao}{\fontsize{16pt}{24pt}\selectfont}        % 三号, 1.5倍行距
+\newcommand{\xiaosan}{\fontsize{15pt}{22pt}\selectfont}        % 小三, 1.5倍行距
+\newcommand{\sihao}{\fontsize{14pt}{21pt}\selectfont}            % 四号, 1.5 倍行距
+\newcommand{\banxiaosi}{\fontsize{13pt}{19.5pt}\selectfont}    % 半小四, 1.5倍行距
+\newcommand{\xiaosi}{\fontsize{12pt}{18pt}\selectfont}            % 小四, 1.5倍行距
+\newcommand{\dawuhao}{\fontsize{11pt}{11pt}\selectfont}       % 大五号, 单倍行距
+\newcommand{\wuhao}{\fontsize{10.5pt}{15.75pt}\selectfont}    % 五号, 单倍行距
+
+
+
+\lstset
+{
+	basicstyle=\ttfamily,
+	% numbers=left,
+	% numberstyle=\tiny,
+	keywordstyle=\color[RGB]{0, 0, 255},
+	commentstyle=\color[RGB]{0, 128, 0},
+	frame=shadowbox,
+	rulesepcolor=\color{red!20!green!20!blue!20},
+	showspaces=false,
+	showstringspaces=false,
+	extendedchars=false,
+	showtabs=false,
+	tabsize=4,
+	xleftmargin=0.5em,
+	xrightmargin=0.5em,
+	% aboveskip=1em,
+	escapeinside=``
+}
+
+
+%============================ 可以自定义文字块 ================================%
+
+\newcommand{\aaa}{这是我给你们的一个示例}
+\newcommand{\bbb}{\aaa \aaa \aaa}
+\newcommand{\ccc}{\bbb \bbb \bbb \bbb \bbb
+
+\bbb \bbb \bbb \bbb \bbb }
+\newcommand{\abc}{abcdefg1234567890}
+\newcommand{\upabc}{ABCDEFGHIJK}
+%%% ----------------------------------------------------------------------
+
+
+
+%============================= 版芯控制 ================================%
+\setlength{\oddsidemargin}{0.57cm}
+\setlength{\evensidemargin}{\oddsidemargin}
+\voffset-6mm \textwidth=150mm \textheight=230mm \headwidth=150mm
+%\rightmargin=35mm
+%                                                                       %
+
+
+%============================= 页面设置 ================================%
+%-------------------- 定义页眉和页脚 使用fancyhdr 宏包 -----------------%
+% 定义页眉与正文间双隔线
+\newcommand{\makeheadrule}{%
+\makebox[0pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}%
+\rule[0.85\baselineskip]{\headwidth}{0.4pt} \vskip-.8\baselineskip}
+\makeatletter
+\renewcommand{\headrule}{%
+{\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
+\makeheadrule}} \makeatother
+
+\newcommand{\adots}{\mathinner{\mkern 2mu%
+\raisebox{0.1em}{.}\mkern 2mu\raisebox{0.4em}{.}%
+\mkern2mu\raisebox{0.7em}{.}\mkern 1mu}}
+
+%\setmainfont{Times New Roman}
+\dottedcontents{chapter}[1.5cm]{\xiaosi\heiti}{3.8em}{9.5pt}
+\dottedcontents{section}[1.5cm]{\xiaosi\heiti}{2.8em}{9.5pt}
+
+
+%=============================== 正文部分 ================================%
+\include{A1-COVER.tex}
+\include{A2-COVER-E.tex}
+\include{A3-COPYRIGHT.tex}
+\include{A4-MEMBERLIST.tex}
+\include{B1-ABSTRACT.tex}
+\include{B2-ABSTRACT-E.tex}
+\include{C1-CHAP1.tex}
+%\include{C1-CHAP2.tex}
+%\include{C1-CHAP3.tex}
+%\include{C1-CHAP4.tex}
+%\include{C1-CHAP5.tex}
+%\include{C1-CHAP6.tex}
+
+%\include{CC-APPENDIX.tex}
+%\include{D1-REFRENCE.tex}
+\include{D2-ACHNOWLEDGEMENT.tex}
+\include{D3-MYACHIEVEMENTS.tex}
+
+\begin{document}
+
+\input{A1-COVER.tex}
+%\clearpage\ \newpage
+\input{A2-COVER-E.tex}
+%\clearpage\ \newpage
+\input{A3-COPYRIGHT.tex}
+%\clearpage\ \newpage
+\input{A4-MEMBERLIST.tex}
+
+%\clearpage\ \newpage
+
+%\newpage
+\pagenumbering{roman}
+\pagestyle{plain}
+\input{B1-ABSTRACT.tex}
+\input{B2-ABSTRACT-E.tex}
+
+\setcounter{tocdepth}{2}
+\tableofcontents
+\listoffigures
+\listoftables
+
+\newpage
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+
+\CTEXsetup[format+={\zihao{3}\heiti}]{chapter}
+\CTEXsetup[format+={\raggedright\zihao{4}\heiti}]{section}
+\CTEXsetup[format+={\zihao{-4}\heiti}]{subsection}
+
+
+\setlength{\baselineskip}{25pt}  %%正文设为25磅行间距
+
+\input{C1-CHAP1.tex}
+%\input{C1-CHAP2.tex}
+%\input{C1-CHAP3.tex}
+%\input{C1-CHAP4.tex}
+%\input{C1-CHAP5.tex}
+%\input{C1-CHAP6.tex}
+%\input{C8-CHAP8.tex}
+%\input{CC-APPENDIX.tex}
+
+
+\pagestyle{plain}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{参考文献}
+\input{D1-REFRENCE.tex}
+\bibliographystyle{bib/GBT7714-2005}
+\bibliography{bib/tex}
+
+%\pagestyle{plain}\clearpage
+\pagestyle{plain}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{致谢}
+\input{D2-ACHNOWLEDGEMENT.tex}
+
+\pagestyle{plain}
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{发表论文和科研情况}
+\input{D3-MYACHIEVEMENTS.tex}
+
+
+\printindex
+\end{document}
+
