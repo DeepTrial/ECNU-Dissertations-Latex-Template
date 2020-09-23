@@ -229,14 +229,24 @@
 %\clearpage\ \newpage
 
 %\newpage
-\pagenumbering{roman}
+\pagenumbering{Roman}  %摘要页的页码是罗马字符 roman是小写  Roman是大写
 \pagestyle{plain}
+
+\addcontentsline{toc}{chapter}{摘要}   %在目录页添加摘要及页码，如不需要可直接注释
 \input{B1-ABSTRACT.tex}
+
+\addcontentsline{toc}{chapter}{ABSTRACT}  %在目录页添加abstract及页码，如不需要可直接注释
 \input{B2-ABSTRACT-E.tex}
 
 \setcounter{tocdepth}{2}
+
+\addcontentsline{toc}{chapter}{目录}  %在目录页添加目录及页码，如不需要可直接注释
 \tableofcontents
+
+\addcontentsline{toc}{chapter}{插图}  %在目录页添加插图及页码，如不需要可直接注释
 \listoffigures
+
+\addcontentsline{toc}{chapter}{表格}  %在目录页添加表格及页码，如不需要可直接注释
 \listoftables
 
 \newpage
