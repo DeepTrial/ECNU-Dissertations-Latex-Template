@@ -31,7 +31,8 @@ Dissertation-Main串联起一下部分，是latex编译的入口文件
 
 
 ## 2.编写文章
-每个章节卸载独立的CX-CHAPX.tex文件中，并在Dissertation-Main中添加，才能显式在文中。表格、图片只需按文中例子添加即可。
+- 每个章节需写在独立的CX-CHAPX.tex文件中，并确保在Dissertation-Main中添加，才能显式在文中。
+- 表格、图片只需按文中例子添加即可。
 
 ## 3.辅助工具：
 
